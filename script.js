@@ -28,21 +28,21 @@
             // ------------------------------------
             // 1. Animated Text Effect (Hero Section)
             // ------------------------------------
-            // const animatedTextElement = document.getElementById('animated-text');
-            // const fullText = "NURSING COURSE";
-            // const delay = 100; 
-            // let charIndex = 0;
+            const animatedTextElement = document.getElementById('animated-text');
+            const fullText = "NURSING COURSE";
+            const delay = 100; 
+            let charIndex = 0;
 
-            // function typeText() {
-            //     if (charIndex < fullText.length) {
-            //         animatedTextElement.textContent += fullText.charAt(charIndex);
-            //         charIndex++;
-            //         setTimeout(typeText, delay);
-            //     }
-            // }
+            function typeText() {
+                if (charIndex < fullText.length) {
+                    animatedTextElement.textContent += fullText.charAt(charIndex);
+                    charIndex++;
+                    setTimeout(typeText, delay);
+                }
+            }
 
-            // animatedTextElement.textContent = "";
-            // typeText();
+            animatedTextElement.textContent = "";
+            typeText();
 
 
             // ------------------------------------
@@ -88,6 +88,9 @@
                             openBody.classList.remove('open');
                             openBody.style.maxHeight = 0;
                             openBody.style.padding = '0 15px';
+                            // also remove active class from corresponding header
+                            const openHeader = openBody.previousElementSibling;
+                            if (openHeader && openHeader.classList) openHeader.classList.remove('active');
                         }
                     });
 
@@ -96,10 +99,14 @@
                         body.classList.remove('open');
                         body.style.maxHeight = 0;
                         body.style.padding = '0 15px';
+                        // update header caret state
+                        header.classList.remove('active');
                     } else {
                         body.classList.add('open');
                         body.style.maxHeight = body.scrollHeight + 30 + "px";
                         body.style.padding = '15px';
+                        // update header caret state
+                        header.classList.add('active');
                     }
                 });
             });

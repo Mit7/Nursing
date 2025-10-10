@@ -1,6 +1,6 @@
 /* --- Custom Cursor Styles --- */
         *{
-            cursor: none;
+            /* cursor: none; */
         }
         
         /* .cursor-dot {
@@ -70,4 +70,20 @@
 
         ::-webkit-scrollbar-thumb:hover {
         background: linear-gradient(180deg, #FFD24C 0%, #FFB100 100%);
+        }
+        
+        /* Hide custom cursor and default cursor on mobile/touch devices */
+        @media (hover: none) and (pointer: coarse), (pointer: coarse) {
+            /* Remove custom cursor elements if present */
+            .cursor-dot,
+            .cursor-outline {
+                display: none !important;
+                visibility: hidden !important;
+                pointer-events: none !important;
+            }
+
+            /* Ensure default cursor isn't shown (some mobile browsers ignore cursor) */
+            html, body, * {
+                cursor: auto !important;
+            }
         }
