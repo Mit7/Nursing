@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sigma University Nursing - Enroll Today!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        /* Import Google Fonts */
+       @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Poppins:wght@400;600;700&display=swap');
+       @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Roboto:wght@300;400;500&display=swap');
+
+
+        /* --- Global Styles & Variables (Palette) --- */
+        :root {
+            --primary-color: #092E5D; /* Navy Blue */
+            --secondary-color: #FFB100; /* Gold/Yellow */
+            --cta-red: #CC0000; /* Deep Red for form button */
+            --primary-light: #d8e5f3; /* Lighter shade of Primary for BG */
+            --secondary-light: #fff3d6; /* Lighter shade of Secondary for accents */
+            --text-dark: #333;
+            --text-light: #f4f4f4;
+            --bg-light: #ffffff;
+            --bg-section: #f8f9fa; 
+            --font-heading: 'Poppins', serif;
+            --font-body: 'Roboto', sans-serif;
+            --navbar-height: 70px; /* Define a fixed height for the navbar */
+        }
+
+        /* Enable smooth scrolling and account for sticky navbar height */
+        html {
+            scroll-behavior: smooth;
+            /* This padding shifts all content down to prevent the sticky navbar from hiding content */
+            padding-top: var(--navbar-height); 
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-heading);
+            color: var(--primary-color);
+            margin-bottom: 0.5em;
+        }
+
+        section {
+            padding: 60px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            color: var(--primary-color);
+        }
+
+        .cta-button {
+            display: block;
+            width: 100%;
+            padding: 14px 20px;
+            background-color: var(--cta-red); 
+            color: var(--text-light);
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s;
+            text-transform: uppercase;
+            box-shadow: 0 4px 10px rgba(204, 0, 0, 0.4);
+        }
+
+        .cta-button:hover {
+            background-color: #a30000; 
+            transform: translateY(-3px);
+        }
+
+        /* FIX for section headers being hidden by sticky nav upon anchor link click */
+        section:target {
+            padding-top: calc(60px + var(--navbar-height));
+            margin-top: calc(0px - var(--navbar-height));
+        }
+        #about-course:target {
+            padding-top: 60px; /* Standard section padding */
+            margin-top: 0;
+        }
+
+        /* --- STICKY NAVBAR STYLES --- */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--navbar-height);
+            /* background-color: var(--primary-color); */
+            background-color: white;
+            /* color: var(--text-light); */
+            color: var(--primary-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s;
+        }
+
+        /* .nav-logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: var(--secondary-color);
+            letter-spacing: 1px;
+        } */
+         /* Updated logo container style */
+        .nav-logo {
+            /* Removed old font-size, color, and letter-spacing for text */
+            /* Ensure the logo container centers the image vertically */
+            display: flex;
+            align-items: center; 
+            height: 100%; /* Match navbar height */
+        }
+
+        /* New image style to control logo size */
+        .navbar-logo-img {
+            /* height: 90%; */
+            /* max-width: 300px;  */
+            width: 150px;
+            margin-top: -5px;
+            object-fit: contain;
+            transition: transform 0.3s;
+        }
+        .navbar-logo-img-footer {
+            width: 250px;
+            margin-top: -15%;
+            margin-bottom: -15%;
+            transition: transform 0.3s;
+        }
+
+        .navbar-logo-img:hover {
+            transform: scale(1.02); /* Slight scale on hover for a subtle effect */
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.05em;
+            padding: 10px 0;
+            border-bottom: 3px solid transparent;
+            transition: color 0.3s, border-bottom 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+            border-bottom: 3px solid var(--secondary-color);
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--secondary-color);
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+
+        /* --- 1. HERO SECTION --- */
+        .hero-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 90vh;
+            padding: 80px 70px 80px 70px;   
+            /* padding: 80px 5%; */
+            /* Adjust padding-top to account for the sticky navbar */
+            /* padding-top: calc(80px + var(--navbar-height));  */
+            /* Placeholder Background Image (Replace 'nursing-bg.jpg') */
+            background: linear-gradient(to right, rgba(9, 46, 93, 0.5), rgba(9, 46, 93, 0.3)), url('nursing.webp') no-repeat center center/cover;
+            color: var(--text-light);
+            max-width: none;
+        }
+
+        .hero-content-left {
+            flex: 1.5;
+            padding-right: 40px;
+        }
+
+        .course-title {
+            font-size: 4.5em;
+            line-height: 1.05;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            color: var(--text-light);
+        }
+
+        #animated-text {
+            color: var(--secondary-color);
+            display: inline-block;
+            font-size: 0.8em;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+
+        .hero-details {
+            margin: 20px 0;
+            font-size: 1.2em;
+            max-width: 500px;
+        }
+
+        .hero-stats span {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            margin-right: 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 1.1em;
+            border-left: 3px solid var(--secondary-color);
+            font-weight: 300;
+        }
+
+        .hero-stats span b {
+            font-weight: 500;
+        }
+
+        .hero-content-right {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .enquiry-form-container {
+            background-color: var(--bg-light);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            border-top: 5px solid var(--secondary-color);
+            animation: fadeIn 1s ease-out;
+        }
+
+        .enquiry-form-container h2 {
+            color: var(--cta-red);
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 1.8em;
+        }
+
+        .enquiry-form-container input,
+        .enquiry-form-container select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .form-disclaimer {
+            text-align: center;
+            font-size: 0.8em;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        /* --- 2. ABOUT SECTION --- */
+        .about-section {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            padding: 80px 5%;
+            background-color: var(--primary-light); 
+            border-radius: 0 0 15px 15px;
+        }
+
+        .about-image-container {
+            flex: 1;
+            min-height: 400px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            /* Placeholder Image */
+            background: #f1f1f1 url('second.webp') no-repeat center center/cover;
+        }
+
+        .about-text-container {
+            flex: 1;
+        }
+
+        .about-text-container h2 {
+            font-size: 2.5em;
+            border-left: 5px solid var(--secondary-color);
+            padding-left: 15px;
+        }
+
+        .about-text-container ul {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 20px;
+        }
+
+        .about-text-container li {
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .about-text-container li i {
+            color: var(--secondary-color);
+            margin-right: 10px;
+        }
+
+        /* --- 3. PROGRAMS TABS & ACCORDION --- */
+        .programs-section {
+            text-align: center;
+            padding-top: 40px;
+        }
+
+        .programs-section h2 {
+            margin-bottom: 30px;
+        }
+
+        .tabs-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            background-color: var(--primary-light);
+            border-radius: 8px;
+            padding: 5px;
+        }
+
+        .tab-button {
+            background-color: transparent;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            color: var(--primary-color);
+            transition: background-color 0.3s, color 0.3s;
+            border-radius: 5px;
+        }
+
+        .tab-button.active {
+            background-color: var(--primary-color); 
+            color: var(--text-light);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .tab-content {
+            display: none;
+            text-align: left;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            padding: 20px;
+            background-color: var(--bg-light);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--primary-light);
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: slideInUp 0.5s ease-out;
+        }
+
+        /* Accordion Styling */
+        .accordion-item {
+            margin-bottom: 15px;
+            border: 1px solid #eee;
+            border-radius: 5px;
+            overflow: hidden;
+            transition: box-shadow 0.3s;
+        }
+
+        .accordion-header {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--primary-light);
+            border: none;
+            text-align: left;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            color: var(--primary-color);
+            border-left: 5px solid var(--secondary-color);
+        }
+
+        .accordion-header:hover {
+            background-color: #c0d1e5;
+        }
+
+        .accordion-body {
+            padding: 0 15px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+            background-color: var(--bg-light);
+        }
+
+        .accordion-body.open {
+            max-height: 300px;
+            padding: 15px;
+        }
+
+        /* --- 4. ACHIEVEMENTS SECTION --- */
+        .achievements-section {
+            text-align: center;
+            padding-bottom: 80px;
+        }
+
+        .achievement-cards-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .achievement-card {
+            flex: 1;
+            background-color: var(--bg-section);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, background-color 0.3s;
+            border-bottom: 5px solid var(--secondary-color);
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-5px);
+            background-color: #e2f0e2;
+        }
+
+        .achievement-card i {
+            font-size: 3.5em;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        /* --- 5. WHY CHOOSE US SECTION --- */
+        .why-choose-us-section {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 60px 5%;
+            border-radius: 15px;
+        }
+
+        .why-choose-us-section h2 {
+            color: var(--secondary-color);
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .choice-points {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .point {
+            flex: 1;
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .point h3 {
+            color: var(--text-light);
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .point i {
+            font-size: 2em;
+            color: var(--secondary-color);
+            margin-right: 10px;
+        }
+
+        /* --- 6. HOW TO APPLY SECTION --- */
+        .apply-process-section {
+            text-align: center;
+            padding: 80px 5%;
+        }
+
+        .apply-process-section h2 {
+            margin-bottom: 50px;
+        }
+
+        .process-steps-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .step-card {
+            flex: 1;
+            min-width: 200px;
+            padding: 20px;
+            border: 1px dashed var(--primary-color);
+            border-radius: 8px;
+            position: relative;
+            padding-top: 40px;
+            transition: background-color 0.3s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .step-card:hover {
+            background-color: #f0f8ff;
+        }
+
+        .step-number {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2em;
+            font-weight: bold;
+            border: 4px solid var(--bg-light);
+        }
+
+        .step-card:not(:last-child)::after {
+            content: '>';
+            position: absolute;
+            right: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2em;
+            color: var(--primary-color);
+            font-weight: 100;
+        }
+        
+        .step-card:last-child::after {
+            content: none;
+        }
+
+
+        /* --- 7. FOOTER --- */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 40px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .footer-logo, .footer-contact, .footer-address {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo p {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+
+        .footer-logo .tagline {
+            font-size: 1em;
+            color: var(--text-light);
+            opacity: 0.8;
+        }
+
+        .footer-contact h3, .footer-address h3 {
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+
+        .footer-contact p, .footer-address p {
+            margin-bottom: 8px;
+        }
+
+        .footer-contact a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-contact a:hover {
+            color: var(--secondary-color);
+        }
+
+        .footer-contact i, .footer-address i {
+            margin-right: 10px;
+            color: var(--secondary-color);
+        }
+
+        .social-icons a {
+            color: var(--text-light);
+            font-size: 1.5em;
+            margin-right: 15px;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: var(--secondary-color);
+        }
+
+
+        /* --- ANIMATIONS (Keyframes) --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- RESPONSIVENESS (Media Queries) --- */
+        @media (max-width: 1024px) {
+            .hero-section {
+                flex-direction: column;
+                padding-top: calc(40px + var(--navbar-height));
+                padding-bottom: 40px;
+                min-height: auto;
+            }
+
+            .hero-content-left {
+                padding-right: 0;
+                text-align: center;
+                margin-bottom: 40px;
+            }
+
+            .course-title {
+                font-size: 3.5em;
+            }
+
+            .hero-stats {
+                margin-top: 20px;
+            }
+
+            .hero-content-right {
+                width: 100%;
+                max-width: 450px;
+            }
+
+            .about-section {
+                flex-direction: column;
+            }
+
+            .about-image-container {
+                min-height: 300px;
+                width: 100%;
+                margin-bottom: 30px;
+            }
+
+            .achievement-cards-container,
+            .choice-points,
+            .process-steps-container {
+                flex-direction: column;
+            }
+
+            .achievement-card,
+            .point,
+            .step-card {
+                margin-bottom: 20px;
+            }
+
+            .step-card:not(:last-child)::after {
+                content: '\2193'; /* Down Arrow */
+                right: 50%;
+                bottom: -35px;
+                top: auto;
+                transform: translateX(50%);
+            }
+
+            .step-card {
+                margin-bottom: 40px;
+            }
+
+            footer {
+                text-align: center;
+            }
+
+            .footer-logo, .footer-contact, .footer-address {
+                flex-basis: 100%;
+            }
+
+            /* Mobile Navbar */
+            .nav-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: var(--navbar-height);
+                left: 0;
+                width: 100%;
+                background-color: var(--primary-color);
+                box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
+                padding: 20px 5%;
+                text-align: center;
+                transition: max-height 0.4s ease-out;
+                max-height: 0;
+                overflow: hidden;
+            }
+            
+            .nav-links.open {
+                display: flex;
+                max-height: 400px;
+            }
+
+            .nav-links li {
+                margin: 10px 0;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 10px 0;
+                border-bottom: none;
+                font-size: 1.2em;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .course-title {
+                font-size: 2.5em;
+            }
+
+            .hero-stats span {
+                display: block;
+                margin: 10px 0;
+            }
+
+            .tabs-container {
+                flex-wrap: wrap;
+            }
+
+            .tab-button {
+                flex: 1 1 100%;
+                padding: 10px 20px;
+                margin: 5px 0;
+            }
+        }
+
+        /* --- Custom Cursor Styles --- */
+        *{
+            cursor: none;
+        }
+        
+        /* .cursor-dot {
+            width: 10px;
+            height: 10px;
+            background-color: #FFB100;
+        }
+        
+        .cursor-outline {
+            width: 18px;
+            height: 18px;
+            background: #1c2d5e31;
+        } */
+        .cursor-dot {
+            width: 13px;
+            height: 13px;
+            background-color: #FFB100;
+            position: fixed;
+            box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.692);
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 10001; /* Above outline */
+            pointer-events: none;
+        }
+
+        .cursor-outline {
+            width: 25px;
+            height: 25px;
+            background: #1c2d5e9a;
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 10000; /* Below dot */
+            pointer-events: none;
+        }
+/*         
+        .cursor-dot,
+        .cursor-outline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 9999;
+            pointer-events: none;
+        } */
+
+        /* Custome Scrollbar */
+        ::-webkit-scrollbar {
+        width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+        background: linear-gradient(180deg, #1B2C5B 0%, #0E1636 100%);
+        /*border-radius: 10px;*/
+        }
+
+        ::-webkit-scrollbar-thumb {
+        background: linear-gradient(180deg, #FFB100 0%, #FFCF40 100%);
+        border-radius: 10px;
+        border: 2px solid #1B2C5B;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(180deg, #FFD24C 0%, #FFB100 100%);
+        }
+    </style>
+</head>
+<body>
+    <div class="cursor-dot" data-cursor-dot></div>
+    <div class="cursor-outline" data-cursor-outline></div>
+    <nav class="navbar">
+        <div class="nav-logo">
+            <img src="Sigma-Logo.webp" alt="Sigma University Logo" class="navbar-logo-img">
+        </div>
+        <ul class="nav-links">
+            <li><a href="#about-course">About</a></li>
+            <li><a href="#programs">Programs</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+            <li><a href="#why-choose-us">Why Choose Us</a></li>
+            <li><a href="#apply-process">Apply Now</a></li>
+        </ul>
+        <button class="nav-toggle" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+    <header class="hero-section">
+        <div class="hero-content-left">
+            <h1 class="course-title">
+                Sigma University <br>
+                <span id="animated-text">NURSING COURSE</span>
+            </h1>
+            <p class="hero-details">
+                Start your journey in Nursing and become a compassionate healthcare professional dedicated to serving communities.
+            </p>
+            <div class="hero-stats">
+                <span>
+                    <!-- <i class="fas fa-globe"></i>&nbsp;&nbsp;  -->
+                    <b>40%</b> Students Placed Internationally</span>
+                <span><b>100%</b> Placement Record</span>
+            </div>
+        </div>
+        <div class="hero-content-right">
+            <div class="enquiry-form-container">
+                <h2>Secure Your Spot Now!</h2>
+                <form id="enquiry-form" action="#" method="POST">
+                    <input type="text" name="name" placeholder="Full Name *" required>
+                    <input type="email" name="email" placeholder="Email Address *" required>
+                    <input type="tel" name="phone" placeholder="Phone Number *" required>
+                    <select name="program">
+                        <option value="">Select City</option>
+                        <option value="diploma">Diploma in Nursing</option>
+                        <option value="degree">B.Sc. Nursing</option>
+                        <option value="masters">M.Sc. Nursing</option>
+                    </select>
+                    <select name="program">
+                        <option value="">Select State</option>
+                        <option value="diploma">Diploma in Nursing</option>
+                        <option value="degree">B.Sc. Nursing</option>
+                        <option value="masters">M.Sc. Nursing</option>
+                    </select>
+                    <select name="program">
+                        <option value="">Select Program of Interest</option>
+                        <option value="diploma">Diploma in Nursing</option>
+                        <option value="degree">B.Sc. Nursing</option>
+                        <option value="masters">M.Sc. Nursing</option>
+                    </select>
+                    <button type="submit" class="cta-button">Apply Now</button>
+                    <p class="form-disclaimer">By submitting the form you declare that you have read and agreed with our<br><a href="#">Terms & Conditions</a></p>
+                </form>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="about-section" id="about-course">
+            <div class="about-image-container">
+                </div>
+            <div class="about-text-container">
+                <h2>About The Course</h2>
+                <p>
+                    The Faculty of Nursing at Sigma University, with over 18 years of excellence, offers a Government, GNC, and INC-approved Nursing program. Combining strong academics with hands-on clinical training, it features modern infrastructure and expert faculty. With a limited intake of 40 students, the program ensures personalized learning and prepares graduates for rewarding careers in leading healthcare institutions.
+                </p>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> 18+ years of excellence, GNC & INC approved.</li>
+                    <li><i class="fas fa-check-circle"></i> Strong academics with practical training.</li>
+                    <li><i class="fas fa-check-circle"></i> Scholarships & affordable fees.</li>
+                    <li><i class="fas fa-check-circle"></i> Career-ready graduates for top healthcare roles.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="programs-section" id="programs">
+            <h2>Our Specialized Nursing Programs</h2>
+            <div class="tabs-container">
+                <button class="tab-button active" data-program="diploma">Diploma</button>
+                <button class="tab-button" data-program="degree">Degree (B.Sc.)</button>
+                <button class="tab-button" data-program="masters">Masters (M.Sc.)</button>
+            </div>
+
+            <div id="diploma" class="tab-content active">
+                <div class="accordion-item">
+                    <button class="accordion-header">Auxiliary Nurse Midwifery (ANM)</button>
+                    <div class="accordion-body">
+                        <p>A foundation course focused on basic patient care, midwifery, and community health. **Duration: 2 Years.**</p>
+                        <p><em>Key Modules: Community Health Nursing, Health Promotion, Midwifery Practice.</em></p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">General Nursing and Midwifery (GNM)</button>
+                    <div class="accordion-body">
+                        <p>A comprehensive program covering general nursing skills for clinical and community settings. **Duration: 3 Years.**</p>
+                        <p><em>Key Modules: Medical-Surgical Nursing, Pediatrics, Mental Health Nursing.</em></p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="degree" class="tab-content">
+                <div class="accordion-item">
+                    <button class="accordion-header">Bachelor of Science in Nursing (B.Sc. Nursing)</button>
+                    <div class="accordion-body">
+                        <p>The standard undergraduate degree, preparing students for professional licensure and advanced clinical roles. **Duration: 4 Years.**</p>
+                        <p><em>Key Modules: Nursing Research, Pharmacology, Critical Care Nursing, Management of Nursing Services.</em></p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="masters" class="tab-content">
+                <div class="accordion-item">
+                    <button class="accordion-header">M.Sc. in Critical Care Nursing</button>
+                    <div class="accordion-body">
+                        <p>Specialized postgraduate study for aspiring nurse specialists in intensive care and emergency units. **Duration: 2 Years.**</p>
+                        <p><em>Specialization Areas: Cardiac Nursing, Emergency Triage, Ventilator Management.</em></p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">M.Sc. in Pediatric Nursing</button>
+                    <div class="accordion-body">
+                        <p>Focuses on advanced care, development, and health challenges specific to children and adolescents. **Duration: 2 Years.**</p>
+                        <p><em>Key Modules: Neonatal Care, Child Psychology, Pediatric Pharmacology.</em></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="achievements-section" id="achievements">
+            <h2>Our Global Recognition</h2>
+            <div class="achievement-cards-container">
+                <div class="achievement-card">
+                    <i class="fas fa-trophy"></i>
+                    <h3>Top 5 Institute</h3>
+                    <p>Recognized by the National Nursing Council for practical training.</p>
+                </div>
+                <div class="achievement-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Global Placements</h3>
+                    <p>Alumni placed in top hospitals across USA, UK, Australia, and Canada.</p>
+                </div>
+                <div class="achievement-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Faculty Expertise</h3>
+                    <p>Faculty includes PhD holders and certified clinical nurse specialists.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="why-choose-us-section" id="why-choose-us">
+            <h2>Why Sigma University? Your Future in Focus</h2>
+            <div class="choice-points">
+                <div class="point">
+                    <h3><i class="fas fa-clinic-medical"></i><br> Affiliated Hospitals</h3>
+                    <p>Direct clinical rotations in Sigma's own multi-specialty teaching hospital.</p>
+                </div>
+                <div class="point">
+                    <h3><i class="fas fa-microscope"></i><br> Research-Led Teaching</h3>
+                    <p>Engage in nursing research projects from your very first year.</p>
+                </div>
+                <div class="point">
+                    <h3><i class="fas fa-star-of-life"></i><br> Supportive Community</h3>
+                    <p>A dedicated student welfare cell for academic and personal guidance.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="apply-process-section" id="apply-process">
+            <h2>Your Journey Starts Here: How to Apply</h2>
+            <div class="process-steps-container">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Application</h3>
+                    <p>Submit your details via the form above and complete the online application.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Aptitude Test</h3>
+                    <p>Qualify the Sigma Nursing Aptitude Test (SNAT).</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Personal Interview</h3>
+                    <p>Attend a virtual or in-person interview with the Nursing Faculty Dean.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h3>Admission</h3>
+                    <p>Receive your offer letter and secure your seat with fee payment.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-logo">
+            <!-- <p>Sigma University</p> -->
+             <img src="Sigma-White.webp" alt="Sigma University Logo" class="navbar-logo-img-footer">
+            <!-- <p class="tagline">School of Nursing</p> -->
+        </div>
+        <div class="footer-contact">
+            <h3>Contact Admissions</h3>
+            <p><i class="fas fa-envelope"></i> <a href="mailto:admissions@sigma.edu">admissions@sigma.edu</a></p>
+            <p><i class="fas fa-phone-alt"></i> <a href="tel:+911234567890">+91 123 456 7890</a></p>
+        </div>
+        <div class="footer-address">
+            <h3>Campus Address</h3>
+            <p>Nursing Faculty Block, Sigma Campus,</p>
+            <p>Knowledge City, Pincode 12345</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // ------------------------------------
+            // Navbar Toggle Functionality
+            // ------------------------------------
+            const navToggle = document.querySelector('.nav-toggle');
+            const navLinks = document.querySelector('.nav-links');
+
+            navToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('open');
+                const icon = navToggle.querySelector('i');
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
+            });
+
+            // Close the mobile menu when a link is clicked
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth <= 1024) {
+                        navLinks.classList.remove('open');
+                        const icon = navToggle.querySelector('i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            });
+
+
+            // ------------------------------------
+            // 1. Animated Text Effect (Hero Section)
+            // ------------------------------------
+            // const animatedTextElement = document.getElementById('animated-text');
+            // const fullText = "NURSING COURSE";
+            // const delay = 100; 
+            // let charIndex = 0;
+
+            // function typeText() {
+            //     if (charIndex < fullText.length) {
+            //         animatedTextElement.textContent += fullText.charAt(charIndex);
+            //         charIndex++;
+            //         setTimeout(typeText, delay);
+            //     }
+            // }
+
+            // animatedTextElement.textContent = "";
+            // typeText();
+
+
+            // ------------------------------------
+            // 2. Program Tabs Switching (Section 3)
+            // ------------------------------------
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const programName = button.getAttribute('data-program');
+
+                    // Deactivate all buttons and content
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+
+                    // Activate the clicked button and corresponding content
+                    button.classList.add('active');
+                    document.getElementById(programName).classList.add('active');
+                    
+                    // Close all accordions when switching tabs
+                    document.getElementById(programName).querySelectorAll('.accordion-body').forEach(body => {
+                        body.classList.remove('open');
+                        body.style.maxHeight = 0;
+                        body.style.padding = '0 15px';
+                    });
+                });
+            });
+
+            // ------------------------------------
+            // 3. Accordion Functionality (Section 3)
+            // ------------------------------------
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', () => {
+                    const body = header.nextElementSibling;
+                    
+                    // Close all other open accordion bodies in the *current* tab
+                    const currentTab = header.closest('.tab-content');
+                    currentTab.querySelectorAll('.accordion-body.open').forEach(openBody => {
+                        if (openBody !== body) {
+                            openBody.classList.remove('open');
+                            openBody.style.maxHeight = 0;
+                            openBody.style.padding = '0 15px';
+                        }
+                    });
+
+                    // Toggle the clicked accordion body
+                    if (body.classList.contains('open')) {
+                        body.classList.remove('open');
+                        body.style.maxHeight = 0;
+                        body.style.padding = '0 15px';
+                    } else {
+                        body.classList.add('open');
+                        body.style.maxHeight = body.scrollHeight + 30 + "px";
+                        body.style.padding = '15px';
+                    }
+                });
+            });
+
+            // ------------------------------------
+            // 4. Form Submission Handler (Optional)
+            // ------------------------------------
+            const form = document.getElementById('enquiry-form');
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                alert("Thank you for your enquiry! We received your details and will contact you shortly.");
+                
+                form.reset(); 
+            });
+            // ------------------------------------
+            // 4. Custome Cursor Implementation
+            // ------------------------------------
+            const cursorDot = document.querySelector("[data-cursor-dot]");
+            const cursorOutline = document.querySelector("[data-cursor-outline]");
+
+            window.addEventListener("mousemove", function (e) {
+
+            const posX = e.clientX;
+            const posY = e.clientY;
+
+            cursorDot.style.left = `${posX}px`;
+            cursorDot.style.top = `${posY}px`;
+
+            // cursorOutline.style.left = `${posX}px`;
+            // cursorOutline.style.top = `${posY}px`;
+
+            cursorOutline.animate({
+                left: `${posX}px` ,
+                top: `${posY}px`
+            }, { duration: 500, fill: "forwards" });
+
+            });
+        });
+    </script>
+</body>
+</html>
