@@ -28,21 +28,21 @@
             // ------------------------------------
             // 1. Animated Text Effect (Hero Section)
             // ------------------------------------
-            const animatedTextElement = document.getElementById('animated-text');
-            const fullText = "NURSING COURSE";
-            const delay = 100; 
-            let charIndex = 0;
+            // const animatedTextElement = document.getElementById('animated-text');
+            // const fullText = "NURSING COURSE";
+            // const delay = 100; 
+            // let charIndex = 0;
 
-            function typeText() {
-                if (charIndex < fullText.length) {
-                    animatedTextElement.textContent += fullText.charAt(charIndex);
-                    charIndex++;
-                    setTimeout(typeText, delay);
-                }
-            }
+            // function typeText() {
+            //     if (charIndex < fullText.length) {
+            //         animatedTextElement.textContent += fullText.charAt(charIndex);
+            //         charIndex++;
+            //         setTimeout(typeText, delay);
+            //     }
+            // }
 
-            animatedTextElement.textContent = "";
-            typeText();
+            // animatedTextElement.textContent = "";
+            // typeText();
 
 
             // ------------------------------------
@@ -114,13 +114,13 @@
             // ------------------------------------
             // 4. Form Submission Handler (Optional)
             // ------------------------------------
-            const form = document.getElementById('enquiry-form');
-            form.addEventListener('submit', (e) => {
-                e.preventDefault();
+            // const form = document.getElementById('enquiry-form');
+            // form.addEventListener('submit', (e) => {
+            //     e.preventDefault();
                 
-                alert("Thank you for your enquiry! We received your details and will contact you shortly.");
+            //     alert("Thank you for your enquiry! We received your details and will contact you shortly.");
                 
-                form.reset(); 
-            });
+            //     form.reset(); 
+            // });
            
         // });
