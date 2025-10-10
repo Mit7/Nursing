@@ -1,4 +1,4 @@
-// document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
             // ------------------------------------
             // Navbar Toggle Functionality
             // ------------------------------------
@@ -123,4 +123,4 @@
             //     form.reset(); 
             // });
            
-        // });
+        });

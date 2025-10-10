@@ -178,13 +178,13 @@
             align-items: center;
             min-height: 90vh;
             padding: 80px 70px 80px 70px;   
-            /* padding: 80px 5%; */
-            /* Adjust padding-top to account for the sticky navbar */
-            /* padding-top: calc(80px + var(--navbar-height));  */
-            /* Placeholder Background Image (Replace 'nursing-bg.jpg') */
-            background: linear-gradient(to right, rgba(9, 46, 93, 0.5), rgba(9, 46, 93, 0.3)), url('nursing.webp') no-repeat center center/cover;
             color: var(--text-light);
             max-width: none;
+            background-image: url('nursing.webp');
+            /* background-size: cover; */
+            /* background-position: center; */
+            /* background-repeat: no-repeat; */
+            background-color: var(--primary-color);
         }
 
         .hero-content-left {
@@ -777,4 +777,3 @@
         }
 
         
-  
