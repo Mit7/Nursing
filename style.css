@@ -180,7 +180,7 @@
             padding: 80px 70px 80px 70px;   
             color: var(--text-light);
             max-width: none;
-            background-image: url('nursing.webp');
+            /* background-image: url('nursing.webp'); */
             /* background-size: cover; */
             /* background-position: center; */
             /* background-repeat: no-repeat; */
