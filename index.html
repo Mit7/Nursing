@@ -11,24 +11,35 @@
     
 </head>
 <body>
+    <!-- CUSTOM CURSOR -->
     <div class="cursor-dot" data-cursor-dot></div>
     <div class="cursor-outline" data-cursor-outline></div>
+    <!-- EXIT MODAL -->
+    <div id="exitOverlay"></div>
+    <div id="exitPopup">
+        <h2>Wait!</h2>
+        <p>What if we told you that the solution to your biggest challenge is waiting for you right here?</p>
+        <p>😊 <b>Don't leave without finding out.</b> 😊</p>
+        <button class="close-btn" onclick="closeExitPopup()">Close</button>
+    </div>
+    <!-- NAVBAR -->
     <nav class="navbar">
         <div class="nav-logo">
-            <img src="Sigma-Logo.webp" alt="Sigma University Logo" class="navbar-logo-img" loading="lazy">
+            <a href="#apply"><img src="Sigma-Logo.webp" alt="Sigma University Logo" class="navbar-logo-img" loading="lazy"></a>
         </div>
         <ul class="nav-links">
             <li><a href="#about-course">About</a></li>
             <li><a href="#programs">Programs</a></li>
             <li><a href="#achievements">Achievements</a></li>
             <li><a href="#why-choose-us">Why Choose Us</a></li>
-            <li><a href="#apply-process">Apply Now</a></li>
+            <li><a href="#apply-process">How To Apply?</a></li>
+            <li><a href="#apply" class="university-button">Apply Now</a></li>
         </ul>
         <button class="nav-toggle" aria-label="Toggle navigation">
             <i class="fas fa-bars"></i>
         </button>
     </nav>
-    <header class="hero-section">
+    <header class="hero-section" id="apply">
         <div class="hero-content-left">
             <h1 class="course-title">
                 Sigma University <br>
@@ -168,20 +179,22 @@
             </div>
         </section>
 
-        <section class="why-choose-us-section" id="why-choose-us">
-            <h2>Why Sigma University? Your Future in Focus</h2>
-            <div class="choice-points">
-                <div class="point">
-                    <h3><i class="fas fa-clinic-medical"></i><br> Affiliated Hospitals</h3>
-                    <p>Direct clinical rotations in Sigma's own multi-specialty teaching hospital.</p>
-                </div>
-                <div class="point">
-                    <h3><i class="fas fa-microscope"></i><br> Research-Led Teaching</h3>
-                    <p>Engage in nursing research projects from your very first year.</p>
-                </div>
-                <div class="point">
-                    <h3><i class="fas fa-star-of-life"></i><br> Supportive Community</h3>
-                    <p>A dedicated student welfare cell for academic and personal guidance.</p>
+        <section class="" id="why-choose-us">
+            <div class="why-choose-us-section">
+                <h2>Why Sigma University? Your Future in Focus</h2>
+                <div class="choice-points">
+                    <div class="point">
+                        <h3><i class="fas fa-clinic-medical pb-4"></i><br> Affiliated Hospitals</h3>
+                        <p>Direct clinical rotations in Sigma's own multi-specialty teaching hospital.</p>
+                    </div>
+                    <div class="point">
+                        <h3><i class="fas fa-microscope"></i><br> Research-Led Teaching</h3>
+                        <p>Engage in nursing research projects from your very first year.</p>
+                    </div>
+                    <div class="point">
+                        <h3><i class="fas fa-truck-medical"></i><br> Supportive Community</h3>
+                        <p>A dedicated student welfare cell for academic and personal guidance.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -211,6 +224,12 @@
                 </div>
             </div>
         </section>
+        <a href="tel:+917567176000" class="sticky-call-button">
+            <i class="fas fa-phone"></i> <span class="button-number">+91 7567176000</span>
+        </a>
+        <a href="#top" class="back-to-top-button" id="backToTop">
+            <i class="fas fa-arrow-up"></i>
+        </a>
     </main>
 
     <footer>
@@ -235,7 +254,28 @@
             </div>
         </div>
     </footer>
+    <script>
+        const backToTopButton = document.getElementById('backToTop');
+        const scrollThreshold = 300; // Pixels to scroll before showing button
 
+        // 1. Toggle visibility based on scroll position
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > scrollThreshold) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+
+        // 2. Smooth scrolling function
+        backToTopButton.addEventListener('click', (e) => {
+            e.preventDefault(); // Stop default jump
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth' // Smooth scroll animation
+            });
+        });
+    </script>
     <script src="script.js"></script>
     <script src="cursor.js"></script>
 </body>
