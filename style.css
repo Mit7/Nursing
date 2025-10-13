@@ -474,20 +474,23 @@ section:target {
 }
 
 .achievement-cards-container {
-    display: flex;
-    justify-content: space-between;
-    gap: 30px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 4 cards per row */
+    gap: 24px;
     margin-top: 30px;
+    align-items: stretch;
 }
 
 .achievement-card {
-    flex: 1;
     background-color: var(--bg-section);
-    padding: 30px;
+    padding: 28px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
     transition: transform 0.3s ease, background-color 0.3s;
     border-bottom: 5px solid var(--secondary-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 .achievement-card:hover {
@@ -499,6 +502,19 @@ section:target {
     font-size: 3.5em;
     color: var(--primary-color);
     margin-bottom: 10px;
+}
+
+/* Responsive: 2 columns on tablet, 1 column on mobile */
+@media (max-width: 1024px) {
+    .achievement-cards-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .achievement-cards-container {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* --- 5. WHY CHOOSE US SECTION --- */
@@ -801,7 +817,8 @@ footer {
 
     .nav-links.open {
         display: flex;
-        max-height: 430px;
+        max-height: 450px;
+        padding-bottom: 20px;
     }
 
     .nav-links li {
