@@ -1,3 +1,28 @@
+/* --- Career Outcomes Columns --- */
+.career-columns {
+    display: flex;
+    gap: 32px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+.career-columns ul {
+    flex: 1;
+    list-style: disc inside;
+    padding-left: 0;
+}
+.career-columns li {
+    margin-bottom: 8px;
+    font-size: 1em;
+}
+@media (max-width: 900px) {
+    .career-columns {
+        flex-direction: column;
+        gap: 0;
+    }
+    .career-columns ul {
+        margin-bottom: 12px;
+    }
+}
 /* --- Global Styles & Variables (Palette) --- */
 :root {
     --primary-color: #092E5D;
@@ -776,7 +801,7 @@ footer {
 
     .nav-links.open {
         display: flex;
-        max-height: 400px;
+        max-height: 430px;
     }
 
     .nav-links li {
