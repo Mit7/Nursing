@@ -322,7 +322,7 @@ section:target {
     overflow: hidden;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     /* Placeholder Image */
-    background: #f1f1f1 url('/assets/images/second.webp') no-repeat center center/cover;
+    background: #f1f1f1 url('../images/second.webp') no-repeat center center/cover;
 }
 
 .about-text-container {
