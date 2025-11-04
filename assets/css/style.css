@@ -1144,3 +1144,78 @@ footer {
     opacity: 1 !important;
     pointer-events: auto !important; /* Re-enable clicking */
 }
+
+/* Feedback Modal (styled to match the exit popup) */
+.feedback-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.35); /* match exit overlay opacity */
+    z-index: 10000;
+    animation: overlayFadeIn 0.3s;
+}
+
+.feedback-modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 32px 40px 28px 40px; /* same padding as exit popup */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    border-radius: 18px;
+    z-index: 10001;
+    min-width: 320px;
+    text-align: center;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    animation: popupFadeIn 0.3s;
+}
+
+.feedback-modal .feedback-header h3 {
+    margin-top: 0;
+    font-size: 1.6rem;
+    color: #2d3748;
+    letter-spacing: 1px;
+}
+
+.feedback-body {
+    font-size: 1.05rem;
+    color: #4a5568;
+    margin-bottom: 20px;
+}
+
+.feedback-footer {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.feedback-footer .cta-button {
+    background: linear-gradient(180deg, #667eea 0%, #092C59 100%);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    width: fit-content;
+    padding: 10px 28px;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.15);
+    transition: background 0.2s, transform 0.2s;
+}
+
+.feedback-footer .cta-button:hover {
+    background: linear-gradient(180deg, #092C59 0%, #667eea 100%);
+    transform: scale(1.03);
+}
+
+/* Success/Error accent — small left border like other UI elements */
+.feedback-modal.success { border-left: 6px solid #029237; border-right: 6px solid #029237; }
+.feedback-modal.error { border-left: 6px solid #eb2e2e; border-right: 6px solid #eb2e2e; }
+
+@media (max-width: 420px) {
+    .feedback-modal { width: calc(100% - 40px); left: 50%; top: 50%; transform: translate(-50%, -50%); }
+}
