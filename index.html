@@ -101,9 +101,9 @@
                     <input type="text" name="studentName" placeholder="Full Name *" required>
                     <input type="email" name="emailId" placeholder="Email Address *" required>
                     <input type="tel" name="mobileNo" placeholder="Phone Number *" required>
-                    <select name="state">
+                    <select name="state" id="state">
                         <option value="">Select State</option>
-                        <option value="an_ni">Andaman and Nicobar Islands</option>
+                        <!-- <option value="Telangana">Telangana</option>
                         <option value="ap">Andhra Pradesh</option>
                         <option value="arunachal_p">Arunachal Pradesh</option>
                         <option value="assam">Assam</option>
@@ -143,18 +143,18 @@
                         <option value="uttar_p">Uttar pradesh</option>
                         <option value="uttarakhand">Uttarakhand</option>
                         <option value="uttaranchal">Uttaranchal</option>
-                        <option value="west_bengal">West bengal</option>
+                        <option value="west_bengal">West bengal</option> -->
                     </select>
-                    <select name="city">
+                    <select name="city" id="city">
                         <option value="">Select City</option>
-                        <option value="vadodara">Vadodara</option>
-                        <option value="ahmedabad">Ahmedabad</option>
-                        <option value="aanand">Aanand</option>
+                        <!-- <option value="vadodara">Vadodara</option>
+                        <option value="Zahirabad">Zahirabad</option>
+                        <option value="aanand">Aanand</option> -->
                     </select>
 
                     <select name="program">
                         <option value="">Select Program of Interest</option>
-                        <option value="anm">ANM</option>
+                        <option value="Bachelor of Science in Nursing">Bachelor of Science in Nursing</option>
                         <option value="ba">B. A.</option>
                         <option value="bcom">B. Com.</option>
                         <option value="bcom_hons">B. Com. (Hons.)</option>
@@ -199,7 +199,8 @@
                         <option value="phd_full">Ph. D. (Full Time)</option>
                         <option value="phd_part">Ph. D. (Part Time)</option>
                     </select>
-                    <input type="hidden" id="source" name="source" value="nursing">
+                    <input type="hidden" id="source" name="source" value="Nursing">
+                    <input type="hidden" name="country" value="India">
                     <input name="apiKey" type="hidden" value="JjzbwhzxA7rc9sm50EgnJiFsa">
                     <button type="submit" class="cta-button">Apply Now</button>
                     <p class="form-disclaimer">By submitting the form you declare that you have read and agreed with
@@ -496,7 +497,8 @@
     </footer>
     <!-- Feedback modal (success / error) -->
     <div id="feedbackOverlay" class="feedback-overlay" aria-hidden="true"></div>
-    <div id="feedbackModal" class="feedback-modal" role="dialog" aria-modal="true" aria-labelledby="feedbackTitle" aria-describedby="feedbackMessage">
+    <div id="feedbackModal" class="feedback-modal" role="dialog" aria-modal="true" aria-labelledby="feedbackTitle"
+        aria-describedby="feedbackMessage">
         <div class="feedback-header">
             <h3 id="feedbackTitle">Status</h3>
         </div>
@@ -603,6 +605,41 @@
                 behavior: 'smooth' // Smooth scroll animation
             });
         });
+    </script>
+    <script>
+        // Load JSON file
+        fetch('./assets/Country_State_City.json')
+            .then(response => response.json())
+            .then(data => {
+                // Extract the first country (if multiple exist)
+                const country = Object.keys(data)[0];
+                const states = data[country];
+                const stateSelect = document.getElementById('state');
+                const citySelect = document.getElementById('city');
+
+                // Populate state dropdown
+                for (let state in states) {
+                    let option = document.createElement('option');
+                    option.value = state;
+                    option.textContent = state;
+                    stateSelect.appendChild(option);
+                }
+
+                // On state change, update city dropdown
+                stateSelect.addEventListener('change', function () {
+                    citySelect.innerHTML = '<option value="">Select City</option>'; // reset
+                    const selectedState = this.value;
+                    if (selectedState && states[selectedState]) {
+                        states[selectedState].forEach(city => {
+                            let option = document.createElement('option');
+                            option.value = city;
+                            option.textContent = city;
+                            citySelect.appendChild(option);
+                        });
+                    }
+                });
+            })
+            .catch(err => console.error('Error loading JSON:', err));
     </script>
     <script src="./assets/js/script.js"></script>
     <script src="./assets/js/cursor.js"></script>
