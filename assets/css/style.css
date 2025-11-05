@@ -169,8 +169,8 @@ section:target {
 
 .navbar-logo-img-footer {
     width: 250px;
-    margin-top: -15%;
-    margin-bottom: -15%;
+    margin-top: -18%;
+    margin-bottom: -16%;
     transition: transform 0.3s;
 }
 
@@ -509,11 +509,26 @@ section:target {
     .achievement-cards-container {
         grid-template-columns: repeat(2, 1fr);
     }
+    .navbar-logo-img-footer {
+        margin-top: -8%;
+        margin-bottom: -8%;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-logo-img-footer {
+        margin-top: -15%;
+        margin-bottom: -10%;
+    }
 }
 
 @media (max-width: 600px) {
     .achievement-cards-container {
         grid-template-columns: 1fr;
+    }
+    .navbar-logo-img-footer {
+        margin-top: -15%;
+        margin-bottom: -15%;
     }
 }
 
@@ -1218,4 +1233,11 @@ footer {
 
 @media (max-width: 420px) {
     .feedback-modal { width: calc(100% - 40px); left: 50%; top: 50%; transform: translate(-50%, -50%); }
+}
+
+/* Flip only the phone icon inside the footer contact block vertically */
+.footer-contact .fa-phone-alt,
+.footer-contact .fas.fa-phone-alt {
+    display: inline-block; /* allow transform */
+    transform: scaleX(-1);
 }
