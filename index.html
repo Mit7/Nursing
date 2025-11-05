@@ -509,8 +509,20 @@
             // Replace alert() usage in the form submit handler with modal calls
             const form = document.getElementById('enquiry-form');
             if (form) {
+                // ** Find the submit button inside the form
+                const submitButton = form.querySelector('button[type="submit"]');
+
                 form.addEventListener('submit', function (event) {
                     event.preventDefault();
+
+                    // ** Check if the form is already submitting
+                    if (submitButton.classList.contains('loading')) {
+                        return; // Exit if already loading
+                    }
+
+                    // ** Disable button and add loading state
+                    submitButton.disabled = true;
+                    submitButton.classList.add('loading');
 
                     const formData = new FormData(form);
                     const payload = {};
@@ -537,6 +549,12 @@
                         .catch(error => {
                             // Show error modal
                             openModal('An error occurred. Please try again later.', false);
+                        })
+                        .finally(() => {
+                            // ** This block runs after success OR error
+                            // ** Re-enable button and remove loading state
+                            submitButton.disabled = false;
+                            submitButton.classList.remove('loading');
                         });
                 });
             }

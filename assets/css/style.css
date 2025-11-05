@@ -1241,3 +1241,51 @@ footer {
     display: inline-block; /* allow transform */
     transform: scaleX(-1);
 }
+
+
+/* --- Button Loading Spinner On The Form --- */
+.cta-button {
+    /* Ensure button can contain a positioned element */
+    position: relative; 
+}
+
+.cta-button.loading {
+    /* Use the hover color to show activity */
+    background-color: #a30000; 
+    cursor: not-allowed;
+    /* Hide the "Apply Now" text */
+    color: transparent; 
+}
+
+/* The spinner itself */
+.cta-button.loading::after {
+    content: "";
+    display: block;
+    width: 28px; /* Spinner size */
+    height: 28px; /* Spinner size */
+    border-radius: 50%;
+    
+    /* Spinner colors */
+    border: 4px solid rgba(255, 255, 255, 0.3); /* Light track */
+    border-top-color: #ffffff; /* White spinner */
+    
+    /* Animation */
+    animation: spin 1s linear infinite;
+    
+    /* Centering the spinner */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -14px; /* Half of width */
+    margin-top: -18px; /* Half of height */
+}
+
+/* Spinner animation */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
