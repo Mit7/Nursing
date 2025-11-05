@@ -159,7 +159,7 @@
                     </select>
                     <input type="hidden" id="source" name="source" value="Nursing">
                     <input type="hidden" name="country" value="India">
-                    <input name="apiKey" type="hidden" value="JjzbwhzxA7rc9sm50EgnJiFsa">
+                    <!-- <input name="apiKey" type="hidden" value="JjzbwhzxA7rc9sm50EgnJiFsa"> -->
                     <button type="submit" class="cta-button">Apply Now</button>
                     <p class="form-disclaimer">By submitting the form you declare that you have read and agreed with
                         our<br>Terms & Conditions</p>
@@ -528,7 +528,9 @@
                     const payload = {};
                     formData.forEach((value, key) => { payload[key] = value; });
 
-                    const apiEndpoint = 'https://crmapi.sigmamis.in/api/CreateLead';
+                    // const apiEndpoint = 'https://crmapi.sigmamis.in/api/CreateLead';
+                    const apiEndpoint = '/api/submit-lead.php';
+                    // const apiEndpoint = '/api/submit-lead';
 
                     fetch(apiEndpoint, {
                         method: 'POST',
