@@ -39,6 +39,7 @@
     --text-light: #f4f4f4;
     --bg-light: #ffffff;
     --bg-section: #f8f9fa;
+    --hero-heading: "Anton", sans-serif;
     --font-heading: 'Poppins', serif;
     --font-body: 'Roboto', sans-serif;
     --navbar-height: 70px;
@@ -235,6 +236,9 @@ section:target {
     line-height: 1.05;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
     color: var(--text-light);
+    font-family: var(--hero-heading) !important;
+    font-weight: 400 !important;
+    font-style: normal !important;
 }
 
 #animated-text {
@@ -243,6 +247,7 @@ section:target {
     font-size: 0.8em;
     font-weight: 900;
     letter-spacing: 2px;
+    font-family: var(--font-heading);
 }
 
 .hero-details {
